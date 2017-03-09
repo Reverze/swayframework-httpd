@@ -1,0 +1,4 @@
+framework:
+    component.init:
+        httpd:
+            controller: Sway\Component\Httpd\Init
