@@ -90,6 +90,12 @@ class HttpdInterface extends DependencyInterface
         }
         else{
             $explodedScriptPath = explode('/', $this->parameters['SCRIPT_FILENAME']);
+
+            if (!isset($this->parameters['REQUEST_URI'])){
+                throw new \Exception("Application is not running in 'web' mode. Probably application is running
+                in 'cli' mode so routing is not available!");
+            }
+
             $explodedRequestUri = explode('/', $this->parameters['REQUEST_URI']);
             
             if ($explodedScriptPath[sizeof($explodedScriptPath) - 1] === $explodedRequestUri[sizeof($explodedRequestUri) - 1]){
